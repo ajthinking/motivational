@@ -54,10 +54,10 @@ function random_color()
     return $colors[$color];    
 }
 
-Route::get('/', function () {
+Route::get('/{quote?}', function ($quote = null) {
     return view('welcome')->with([
         "pic" => random_pic(),
-        "quote" => random_quote(),
+        "quote" => $quote ? $quote : random_quote(),
         "color" => random_color(),
     ]);
 });
